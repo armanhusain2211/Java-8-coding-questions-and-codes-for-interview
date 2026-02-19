@@ -26,26 +26,6 @@ public class Test {
 o/p
 (2, 4, 6, 8, 10)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 **Convert strings to uppercase**
 package p1;
 
@@ -69,8 +49,57 @@ public class Test {
 o/p
 (ARMAN, JAVA, DEVOPS)
 
+**Find frequency**
+
+//Approach(HashMap)
+List<Integer> list = Arrays.asList(1, 2, 3, 2, 1, 2);
+
+Map<Integer, Integer> frequencyMap = new HashMap<>();
+
+for (Integer num : list) {
+    frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1);
+}
+
+System.out.println(frequencyMap);
 
 
+//Approach(Java 8 Stream)
+
+Map<Integer, Long> frequency = list.stream()
+        .collect(Collectors.groupingBy(e -> e, Collectors.counting()));
+
+System.out.println(frequency);
+
+
+**Reverse a List**
+//Approach(Two-pointer)
+
+List<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
+
+for (int i = 0; i < list.size() / 2; i++) {
+
+    int temp = list.get(i);
+    list.set(i, list.get(list.size() - 1 - i));
+    list.set(list.size() - 1 - i, temp);
+}
+
+System.out.println(list);
+
+
+//Approach(Collections.reverse)
+
+import java.util.*;
+
+public class ReverseExample {
+    public static void main(String[] args) {
+
+        List<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
+
+        Collections.reverse(list);
+
+        System.out.println(list);
+    }
+}
 
 
 
